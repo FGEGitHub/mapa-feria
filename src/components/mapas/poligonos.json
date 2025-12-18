@@ -4,39 +4,71 @@
     "descripcion": "Zona recreativa con bancos y sombra."
   },
   "2": {
-    "nombre": "Impresiones 3d",
-    "descripcion": "Todoe n  impresioanes."
+    "nombre": "Impresiones 3D",
+    "descripcion": "Todo en impresiones 3D y diseños personalizados."
+  },
+  "3": {
+    "nombre": "Madera viva",
+    "descripcion": "Artesanías en madera hechas a mano."
   },
   "4": {
-    "nombre": "Carpinchitos didacticos",
-    "descripcion": "Especial orpa de perros."
+    "nombre": "Carpinchitos didácticos",
+    "descripcion": "Juguetes educativos para niños."
   },
-    "5": {
-    "nombre": "Licuados y mas",
-    "descripcion": "Área deportiva."
+  "5": {
+    "nombre": "Licuados y más",
+    "descripcion": "Bebidas naturales y licuados frescos."
   },
-    "6": {
+  "6": {
     "nombre": "Arte y cosas",
-    "descripcion": "Área deportiva."
+    "descripcion": "Objetos artísticos y decorativos."
   },
-    "7": {
+  "7": {
     "nombre": "Pipostick",
-    "descripcion": "Área deportiva."
+    "descripcion": "Snacks dulces y salados para llevar."
   },
-    "8": {
+  "8": {
     "nombre": "Capibara loco",
-    "descripcion": "Área deportiva."
+    "descripcion": "Regalos originales y souvenirs."
   },
-    "9": {
+  "9": {
     "nombre": "Telas y cosas",
-    "descripcion": "Área deportiva."
-  }, 
-    "10": {
+    "descripcion": "Venta de telas, retazos y accesorios."
+  },
+  "10": {
     "nombre": "Roma creaciones",
-    "descripcion": "Área deportiva."
-  },    
-    "11": {
+    "descripcion": "Manualidades y regalos personalizados."
+  },
+  "11": {
     "nombre": "Roma creaciones",
-    "descripcion": "Área deportiva."
+    "descripcion": "Productos artesanales hechos a pedido."
+  },
+  "12": {
+    "nombre": "Dulce encanto",
+    "descripcion": "Repostería casera y dulces artesanales."
+  },
+  "13": {
+    "nombre": "Verde natural",
+    "descripcion": "Plantas, macetas y decoración natural."
+  },
+  "14": {
+    "nombre": "Cuero del Litoral",
+    "descripcion": "Accesorios de cuero hechos a mano."
+  },
+  "15": {
+    "nombre": "Juguetería solar",
+    "descripcion": "Juguetes ecológicos y sustentables."
+  },
+  "16": {
+    "nombre": "PintArte",
+    "descripcion": "Cuadros, láminas y arte visual."
+  },
+  "17": {
+    "nombre": "Sabores del río",
+    "descripcion": "Comidas regionales y platos típicos."
+  },
+  "18": {
+    "nombre": "Tecnolocal",
+    "descripcion": "Accesorios tecnológicos y gadgets."
   }
 }
