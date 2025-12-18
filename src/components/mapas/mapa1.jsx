@@ -1,14 +1,31 @@
 import { useState, useRef } from "react";
 import mapa from "../../assets/parque.png";
 import poligonos from "./poligonos.json";
+const getInitialConfig = () => {
+  const isMobile = window.innerWidth < 768;
 
+  return {
+    scale: isMobile ? 0.25 : 0.7,
+    position: isMobile
+      ? { x: 0, y: 0 }
+      : { x: -200, y: -100 }
+  };
+};
 export default function ParqueSvg() {
+    const isMobile = window.innerWidth < 768;
+    const INITIAL_SCALE = isMobile ? 1.45 : 0.7;
+      const INITIAL_POSITION = isMobile
+  ? { x: 0, y: 0 }
+  : { x: -5000, y: -100 };
   const [tooltip, setTooltip] = useState(null);
   const [modal, setModal] = useState(null);
-
   // ZOOM / PAN
-const [scale, setScale] = useState(0.7);
-  const [position, setPosition] = useState({ x: 2000, y: -100 });
+const { scale: initialScale, position: initialPosition } = getInitialConfig();
+
+const [scale, setScale] = useState(initialScale);
+const [position, setPosition] = useState(initialPosition);
+
+
   const [dragging, setDragging] = useState(false);
   const dragStart = useRef({ x: 0, y: 0 });
 
