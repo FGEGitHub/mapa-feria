@@ -7,8 +7,8 @@ export default function ParqueSvg() {
   const [modal, setModal] = useState(null);
 
   // ZOOM / PAN
-  const [scale, setScale] = useState(1);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+const [scale, setScale] = useState(0.7);
+  const [position, setPosition] = useState({ x: 2000, y: -100 });
   const [dragging, setDragging] = useState(false);
   const dragStart = useRef({ x: 0, y: 0 });
 
