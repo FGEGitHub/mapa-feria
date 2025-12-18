@@ -12,7 +12,7 @@ import {
     useMediaQuery,
     useTheme,
 } from "@mui/material";
-
+import Mapa from "../../components/mapas/mapa1"
 export default function Paginas() {
     const navigate = useNavigate();
 const theme = useTheme();
@@ -43,7 +43,7 @@ useEffect(() => {
             return (
                 <>
                
-                Hola
+               <Mapa/>
                 </>
            
             );
