@@ -25,6 +25,8 @@ const [vistaInicial, setVistaInicial] = useState(true);
 
 const [scale, setScale] = useState(initialScale);
 const [position, setPosition] = useState(initialPosition);
+const [poligonoActivo, setPoligonoActivo] = useState(null);
+const [mostrarLocales, setMostrarLocales] = useState(false);
 
 
   const [dragging, setDragging] = useState(false);
@@ -87,6 +89,82 @@ const handleWheel = (e) => {
   return (<>
            {vistaInicial && (
            <h2>Haz click en la feria</h2>)}
+ <div
+  style={{
+    position: "absolute",
+    top: 20,
+    right: 20,
+    zIndex: 30
+  }}
+>
+  {/* BOTÓN PRINCIPAL */}
+  <button
+    onClick={() => setMostrarLocales(!mostrarLocales)}
+    style={{
+      padding: "10px 14px",
+      borderRadius: "10px",
+      border: "none",
+      background: "#b7484b",
+      color: "#fff",
+      fontWeight: "bold",
+      cursor: "pointer",
+      boxShadow: "0 4px 8px rgba(0,0,0,0.25)"
+    }}
+  >
+    {mostrarLocales ? "Cerrar locales" : "Ver locales"}
+  </button>
+
+  {/* LISTA DESPLEGABLE */}
+  {mostrarLocales && (
+    <div
+      style={{
+        marginTop: "10px",
+        width: "260px",
+        maxHeight: "60vh",
+        overflowY: "auto",
+        background: "#fff",
+        borderRadius: "12px",
+        padding: "12px",
+        boxShadow: "0 4px 10px rgba(0,0,0,0.25)"
+      }}
+    >
+      <h4 style={{ marginTop: 0 }}>Locales</h4>
+
+      {Object.entries(poligonos).map(([id, item]) => (
+        <div
+          key={id}
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "6px 0",
+            borderBottom: "1px solid #eee"
+          }}
+        >
+          <div style={{ fontSize: "14px" }}>
+            <strong>{id}</strong> – {item.nombre}
+          </div>
+
+          <button
+  onClick={() => {
+    setPoligonoActivo(id);   // activa el brillo
+    setModal(item);          // abre modal
+    setMostrarLocales(false); // CIERRA el menú
+  }}
+  style={{
+    fontSize: "12px",
+    padding: "4px 8px",
+    cursor: "pointer"
+  }}
+>
+  Ver
+</button>
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
     <div
       onWheel={handleWheel}
       onMouseDown={handleMouseDown}
@@ -184,6 +262,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("1")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "1"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "1"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "1" ? 18 : 3}
      
      />
    <path d="M1504.42,1767.96 L1623.9,1669.47 L1727.24,1787.33 L1730.47,1845.46 L1610.99,1910.05 L1504.42,1767.96" fill-rule="evenodd" vector-effect="none"
@@ -193,6 +282,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("2")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "2"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "2"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "2" ? 18 : 3}
    />
    <path d="M1643.28,1677.54 L1770.83,1580.66 L1872.55,1698.53 L1870.94,1761.5 L1759.53,1816.4 L1643.28,1677.54" fill-rule="evenodd" vector-effect="none"
    
@@ -201,6 +301,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("3")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "3"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "3"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "3" ? 18 : 3}
    />
    <path d="M1796.67,1577.44 L1920.99,1475.71 L2024.33,1593.58 L2029.17,1663.01 L1896.77,1708.22 L1796.67,1577.44" fill-rule="evenodd" vector-effect="none"
    
@@ -209,6 +320,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("4")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "4"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "4"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "4" ? 18 : 3}
    />
    <path d="M1948.44,1467.64 L2048.55,1375.61 L2163.18,1498.32 L2156.72,1566.13 L2050.16,1627.49 L1948.44,1467.64" fill-rule="evenodd" vector-effect="none"
        onMouseEnter={(e) => handleHover(e, "5")}
@@ -216,6 +338,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("5")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "5"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "5"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "5" ? 18 : 3}
    
    />
    <path d="M2097.11,1404.51 L2097.11,1404.51 L2227.69,1268.26 L2227.69,1268.26 L2327.04,1376.13 L2335.55,1455.61 L2222.01,1484 L2097.11,1404.51" fill-rule="evenodd" vector-effect="none"
@@ -224,6 +357,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("6")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "6"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "61"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "6" ? 18 : 3}
    
    />
    <path d="M2270.27,1276.78 L2372.46,1191.62 L2491.68,1302.32 L2488.84,1370.45 L2378.13,1418.71 L2270.27,1276.78" fill-rule="evenodd" vector-effect="none"
@@ -232,6 +376,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("7")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "7"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "7"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "7" ? 18 : 3}
    
    />
    <path d="M2420.71,1220 L2554.13,1072.4 L2554.13,1072.4 L2659.16,1191.62 L2653.48,1251.23 L2542.77,1316.52 L2420.71,1220" fill-rule="evenodd" vector-effect="none"
@@ -240,6 +395,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("8")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "8"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "8"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "8" ? 18 : 3}
    
    />
    <path d="M2443.28,905.474 L2556.55,1022.23 L2530.41,1072.77 L2431.08,1145.96 L2298.64,1067.54 L2309.09,1001.32 L2443.28,905.474" fill-rule="evenodd" vector-effect="none"
@@ -249,6 +415,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("9")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "9"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "9"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "9" ? 18 : 3}
    />
    <path d="M2122.03,899.473 L2253,786.837 L2363.02,909.951 L2349.92,959.72 L2255.62,1033.06 L2114.17,951.862 L2122.03,899.473" fill-rule="evenodd" vector-effect="none"
        onMouseEnter={(e) => handleHover(e, "10")}
@@ -256,6 +433,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("10")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "10"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "10"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "10" ? 18 : 3}
    
    />
    <path d="M1946.53,794.695 L2069.64,682.06 L2187.52,805.173 L2187.52,839.226 L2093.22,902.092 L2074.88,928.287 L1954.39,844.465 L1946.53,794.695" fill-rule="evenodd" vector-effect="none"
@@ -264,6 +452,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("11")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "11"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "11"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "11" ? 18 : 3}
    
    />
    <path d="M1797.22,708.254 L1920.33,600.857 L2027.73,705.634 L1907.24,826.129 L1791.98,760.643 L1797.22,708.254" fill-rule="evenodd" vector-effect="none"
@@ -273,6 +472,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("12")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "12"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "12"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "12" ? 18 : 3}
    />
    <path d="M1629.58,616.574 L1747.45,493.46 L1854.85,627.051 L1736.97,750.165 L1608.62,655.865 L1629.58,616.574" fill-rule="evenodd" vector-effect="none"
        onMouseEnter={(e) => handleHover(e, "13")}
@@ -280,6 +490,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("13")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "13"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "13"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "13" ? 18 : 3}
    
    />
    <path d="M1802.46,933.526 L1928.19,1040.92 L1912.48,1127.36 L1784.12,1166.66 L1784.12,1166.66 L1697.68,1017.35 L1802.46,933.526" fill-rule="evenodd" vector-effect="none"
@@ -288,6 +509,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("14")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "14"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "14"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "14" ? 18 : 3}
    
    />
    <path d="M1671.49,1014.73 L1671.49,1014.73 L1776.27,1182.37 L1666.25,1224.28 L1569.33,1090.69 L1671.49,1014.73" fill-rule="evenodd" vector-effect="none"
@@ -296,6 +528,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("15")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "15"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "15"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "15" ? 18 : 3}
    
    />
    <path d="M1440.98,1179.75 L1548.37,1088.07 L1640.05,1213.81 L1647.91,1263.57 L1540.52,1310.72 L1440.98,1179.75" fill-rule="evenodd" vector-effect="none"
@@ -304,6 +547,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("16")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "16"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "16"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "16" ? 18 : 3}
    
    />
    <path d="M1302.15,1253.1 L1401.69,1166.66 L1506.46,1287.15 L1514.32,1342.16 L1406.92,1394.55 L1302.15,1253.1" fill-rule="evenodd" vector-effect="none"
@@ -312,6 +566,17 @@ const handleWheel = (e) => {
             onClick={() => handleClick("17")}
             style={{ cursor: "pointer" }}
             fillOpacity={0.001}
+              fill={
+    poligonoActivo === "17"
+      ? "rgba(255,215,0,0.45)"
+      : "#b7484b"
+  }
+  stroke={
+    poligonoActivo === "17"
+      ? "#FFD700"
+      : "#232323"
+  }
+  strokeWidth={poligonoActivo === "17" ? 18 : 3}
    
    />
 
@@ -339,7 +604,8 @@ const handleWheel = (e) => {
                 })
               }
               style={{ cursor: "pointer" }}
-              fillOpacity={0.001}
+              fillOpacity={0.1}
+                
             />
           </g>
         </svg>
