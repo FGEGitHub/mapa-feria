@@ -21,6 +21,7 @@ export default function ParqueSvg() {
   const [modal, setModal] = useState(null);
   // ZOOM / PAN
 const { scale: initialScale, position: initialPosition } = getInitialConfig();
+const [vistaInicial, setVistaInicial] = useState(true);
 
 const [scale, setScale] = useState(initialScale);
 const [position, setPosition] = useState(initialPosition);
@@ -124,6 +125,30 @@ const handleWheel = (e) => {
             height="2480"
             preserveAspectRatio="xMidYMid meet"
           />
+
+          {vistaInicial && (
+  <path
+    d="M2116.45,1236.96 L1674.99,984.572 L1597.41,1041.65 L1514.46,1023.81 L1471.66,979.221 L1458.03,935.495 L1500.85,865.633 L1246.19,847.604 L1194.36,1911.31 L2116.45,1236.96"
+    fill="rgba(183,72,75,0.25)"
+    stroke="#b7484b"
+    strokeWidth="4"
+    style={{ cursor: "pointer" }}
+    onClick={() => {
+      setVistaInicial(false);
+
+      // 🔍 zoom automático a esa zona
+      setScale(1.35);
+      setPosition({
+        x: -900,
+        y: -850
+      });
+      
+    }}transform="translate(-600, 60)  scale(0.75) "
+  />
+)}
+
+
+
  <g stroke="black" fill="none" strokeWidth="1" stroke-linecap="square" stroke-linejoin="bevel" 
  fill-rule="evenodd"
    transform="translate(272, 725)  scale(0.22) ">
@@ -156,6 +181,7 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("1")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
      
      />
    <path d="M1504.42,1767.96 L1623.9,1669.47 L1727.24,1787.33 L1730.47,1845.46 L1610.99,1910.05 L1504.42,1767.96" fill-rule="evenodd" vector-effect="none"
@@ -164,6 +190,7 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("2")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    />
    <path d="M1643.28,1677.54 L1770.83,1580.66 L1872.55,1698.53 L1870.94,1761.5 L1759.53,1816.4 L1643.28,1677.54" fill-rule="evenodd" vector-effect="none"
    
@@ -171,6 +198,7 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("3")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    />
    <path d="M1796.67,1577.44 L1920.99,1475.71 L2024.33,1593.58 L2029.17,1663.01 L1896.77,1708.22 L1796.67,1577.44" fill-rule="evenodd" vector-effect="none"
    
@@ -178,12 +206,14 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("4")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    />
    <path d="M1948.44,1467.64 L2048.55,1375.61 L2163.18,1498.32 L2156.72,1566.13 L2050.16,1627.49 L1948.44,1467.64" fill-rule="evenodd" vector-effect="none"
        onMouseEnter={(e) => handleHover(e, "5")}
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("5")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    
    />
    <path d="M2097.11,1404.51 L2097.11,1404.51 L2227.69,1268.26 L2227.69,1268.26 L2327.04,1376.13 L2335.55,1455.61 L2222.01,1484 L2097.11,1404.51" fill-rule="evenodd" vector-effect="none"
@@ -191,6 +221,7 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("6")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    
    />
    <path d="M2270.27,1276.78 L2372.46,1191.62 L2491.68,1302.32 L2488.84,1370.45 L2378.13,1418.71 L2270.27,1276.78" fill-rule="evenodd" vector-effect="none"
@@ -198,6 +229,7 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("7")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    
    />
    <path d="M2420.71,1220 L2554.13,1072.4 L2554.13,1072.4 L2659.16,1191.62 L2653.48,1251.23 L2542.77,1316.52 L2420.71,1220" fill-rule="evenodd" vector-effect="none"
@@ -205,6 +237,7 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("8")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    
    />
    <path d="M2443.28,905.474 L2556.55,1022.23 L2530.41,1072.77 L2431.08,1145.96 L2298.64,1067.54 L2309.09,1001.32 L2443.28,905.474" fill-rule="evenodd" vector-effect="none"
@@ -213,12 +246,14 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("9")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    />
    <path d="M2122.03,899.473 L2253,786.837 L2363.02,909.951 L2349.92,959.72 L2255.62,1033.06 L2114.17,951.862 L2122.03,899.473" fill-rule="evenodd" vector-effect="none"
        onMouseEnter={(e) => handleHover(e, "10")}
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("10")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    
    />
    <path d="M1946.53,794.695 L2069.64,682.06 L2187.52,805.173 L2187.52,839.226 L2093.22,902.092 L2074.88,928.287 L1954.39,844.465 L1946.53,794.695" fill-rule="evenodd" vector-effect="none"
@@ -226,6 +261,7 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("11")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    
    />
    <path d="M1797.22,708.254 L1920.33,600.857 L2027.73,705.634 L1907.24,826.129 L1791.98,760.643 L1797.22,708.254" fill-rule="evenodd" vector-effect="none"
@@ -234,12 +270,14 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("12")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    />
    <path d="M1629.58,616.574 L1747.45,493.46 L1854.85,627.051 L1736.97,750.165 L1608.62,655.865 L1629.58,616.574" fill-rule="evenodd" vector-effect="none"
        onMouseEnter={(e) => handleHover(e, "13")}
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("13")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    
    />
    <path d="M1802.46,933.526 L1928.19,1040.92 L1912.48,1127.36 L1784.12,1166.66 L1784.12,1166.66 L1697.68,1017.35 L1802.46,933.526" fill-rule="evenodd" vector-effect="none"
@@ -247,6 +285,7 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("14")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    
    />
    <path d="M1671.49,1014.73 L1671.49,1014.73 L1776.27,1182.37 L1666.25,1224.28 L1569.33,1090.69 L1671.49,1014.73" fill-rule="evenodd" vector-effect="none"
@@ -254,6 +293,7 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("15")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    
    />
    <path d="M1440.98,1179.75 L1548.37,1088.07 L1640.05,1213.81 L1647.91,1263.57 L1540.52,1310.72 L1440.98,1179.75" fill-rule="evenodd" vector-effect="none"
@@ -261,6 +301,7 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("16")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    
    />
    <path d="M1302.15,1253.1 L1401.69,1166.66 L1506.46,1287.15 L1514.32,1342.16 L1406.92,1394.55 L1302.15,1253.1" fill-rule="evenodd" vector-effect="none"
@@ -268,6 +309,7 @@ const handleWheel = (e) => {
             onMouseLeave={() => setTooltip(null)}
             onClick={() => handleClick("17")}
             style={{ cursor: "pointer" }}
+            fillOpacity={0.001}
    
    />
 
@@ -295,6 +337,7 @@ const handleWheel = (e) => {
                 })
               }
               style={{ cursor: "pointer" }}
+              fillOpacity={0.001}
             />
           </g>
         </svg>
