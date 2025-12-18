@@ -55,12 +55,13 @@ const [position, setPosition] = useState(initialPosition);
   // -------------------------
   // ZOOM
   // -------------------------
-  const handleWheel = (e) => {
-    e.preventDefault();
-    const delta = -e.deltaY * 0.001;
-    setScale((prev) => Math.min(Math.max(prev + delta, 0.5), 4));
-  };
+const handleWheel = (e) => {
+  const delta = e.deltaY > 0 ? -0.1 : 0.1;
 
+  setScale((prev) =>
+    Math.min(Math.max(prev + delta, 0.3), 3)
+  );
+};
   // -------------------------
   // PAN
   // -------------------------
@@ -270,15 +271,20 @@ const [position, setPosition] = useState(initialPosition);
       {/* MODAL */}
       {modal && (
         <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.5)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 2000
-          }}
+        style={{
+    background: "#fff",
+    padding: isMobile ? "16px" : "20px",
+    borderRadius: isMobile ? "12px 12px 0 0" : "12px",
+
+    width: isMobile ? "100%" : "420px",
+    maxWidth: "95%",
+    maxHeight: isMobile ? "85vh" : "80vh",
+
+    overflowY: "auto",
+
+    position: isMobile ? "fixed" : "relative",
+    bottom: isMobile ? 0 : "auto"
+  }}
           onClick={() => setModal(null)}
         >
           <div

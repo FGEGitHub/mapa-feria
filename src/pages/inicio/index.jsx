@@ -12,7 +12,7 @@ import {
     useMediaQuery,
     useTheme,
 } from "@mui/material";
-import Mapa from "../../components/mapas/mapa1"
+import Mapa from "../../components/mapas/mapa2"
 export default function Paginas() {
     const navigate = useNavigate();
 const theme = useTheme();
