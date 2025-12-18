@@ -84,7 +84,9 @@ const handleWheel = (e) => {
 
   const handleMouseUp = () => setDragging(false);
 
-  return (
+  return (<>
+           {vistaInicial && (
+           <h2>Haz click en la feria</h2>)}
     <div
       onWheel={handleWheel}
       onMouseDown={handleMouseDown}
@@ -137,9 +139,9 @@ const handleWheel = (e) => {
       setVistaInicial(false);
 
       // 🔍 zoom automático a esa zona
-      setScale(1.35);
+      setScale(1.05);
       setPosition({
-        x: -900,
+        x: -350,
         y: -850
       });
       
@@ -423,5 +425,6 @@ const handleWheel = (e) => {
         </button>
       </div>
     </div>
+    </>
   );
 }
