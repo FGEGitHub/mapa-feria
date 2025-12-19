@@ -6,12 +6,12 @@ import poligonos from "./poligonos.json";
 export default function ParqueSvg() {
     const isMobile = window.innerWidth < 768;
 const INITIAL_VIEW = {
-  scale: isMobile ? 0.75 : 0.7,
+  scale: isMobile ? 0.75 : 0.5,
   position: isMobile
     ? { x: -250, y: -500 }
-    : { x: -5000, y: -100 }
+    : { x: 0, y: 0 }
 };
-
+const [popover, setPopover] = useState(null);
   const [tooltip, setTooltip] = useState(null);
   const [modal, setModal] = useState(null);
   // ZOOM / PAN
@@ -44,11 +44,21 @@ const [mostrarLocales, setMostrarLocales] = useState(false);
   // -------------------------
   // MODAL
   // -------------------------
-  const handleClick = (id) => {
-    const data = poligonos[id];
-    if (!data) return;
-    setModal(data);
-  };
+const handleClick = (e, id) => {
+  e.stopPropagation();
+
+  const data = poligonos[id];
+  if (!data) return;
+
+  setPopover({
+    x: e.clientX,
+    y: e.clientY,
+    nombre: data.nombre,
+    descripcion: data.descripcion
+  });
+
+  setPoligonoActivo(id);
+};
 
   // -------------------------
   // ZOOM
