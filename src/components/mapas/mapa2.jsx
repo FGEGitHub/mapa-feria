@@ -1,30 +1,25 @@
 import { useState, useRef } from "react";
 import mapa from "../../assets/parque2.png";
 import poligonos from "./poligonos.json";
-const getInitialConfig = () => {
-  const isMobile = window.innerWidth < 768;
 
-  return {
-    scale: isMobile ? 0.25 : 0.7,
-    position: isMobile
-      ? { x: 0, y: 0 }
-      : { x: -200, y: -100 }
-  };
-};
+
 export default function ParqueSvg() {
     const isMobile = window.innerWidth < 768;
-    const INITIAL_SCALE = isMobile ? 1.45 : 0.7;
-      const INITIAL_POSITION = isMobile
-  ? { x: 0, y: 0 }
-  : { x: -5000, y: -100 };
+const INITIAL_VIEW = {
+  scale: isMobile ? 0.75 : 0.7,
+  position: isMobile
+    ? { x: -250, y: -500 }
+    : { x: -5000, y: -100 }
+};
+
   const [tooltip, setTooltip] = useState(null);
   const [modal, setModal] = useState(null);
   // ZOOM / PAN
-const { scale: initialScale, position: initialPosition } = getInitialConfig();
+
 const [vistaInicial, setVistaInicial] = useState(false);
 
-const [scale, setScale] = useState(initialScale);
-const [position, setPosition] = useState(initialPosition);
+const [scale, setScale] = useState(INITIAL_VIEW.scale);
+const [position, setPosition] = useState(INITIAL_VIEW.position);
 const [poligonoActivo, setPoligonoActivo] = useState(null);
 const [mostrarLocales, setMostrarLocales] = useState(false);
 
@@ -58,11 +53,14 @@ const [mostrarLocales, setMostrarLocales] = useState(false);
   // -------------------------
   // ZOOM
   // -------------------------
+const MIN_ZOOM = isMobile ? 0.25 : 0.5;
+const MAX_ZOOM = isMobile ? 3 : 4;
+
 const handleWheel = (e) => {
   const delta = e.deltaY > 0 ? -0.1 : 0.1;
 
   setScale((prev) =>
-    Math.min(Math.max(prev + delta, 0.3), 3)
+    Math.min(Math.max(prev + delta, MIN_ZOOM), MAX_ZOOM)
   );
 };
   // -------------------------
