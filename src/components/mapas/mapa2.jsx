@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import mapa from "../../assets/parque2.png";
+import mapa from "../../assets/parque3.png";
 import poligonos from "./poligonos.json";
 
 
