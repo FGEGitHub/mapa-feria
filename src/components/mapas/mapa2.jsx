@@ -21,7 +21,7 @@ export default function ParqueSvg() {
   const [modal, setModal] = useState(null);
   // ZOOM / PAN
 const { scale: initialScale, position: initialPosition } = getInitialConfig();
-const [vistaInicial, setVistaInicial] = useState(true);
+const [vistaInicial, setVistaInicial] = useState(false);
 
 const [scale, setScale] = useState(initialScale);
 const [position, setPosition] = useState(initialPosition);
